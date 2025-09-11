@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Precision Tennis Stringing</title>
+    <title>Recent Racket Stringing - Precision Tennis Stringing</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,41 +15,39 @@
             <img src="images/tennis-logo.png" alt="Your Tennis Stringing Business Logo">
         </div>
         <div class="container">
-            <h1>Our Work</h1>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="strings.html">Strings</a>
-                <a href="gallery.html" class="active">Gallery</a>
-            </nav>
+            <h1>Recent Racket Stringing</h1>
+            <p class="tagline">A Glimpse of Our Craftsmanship</p>
         </div>
     </header>
 
     <main class="container">
         <section id="gallery" class="section-block">
-            <h2>Recent Racket Stringing</h2>
-            <p>Here are some of the rackets we've recently strung. Click on any image to get a closer look.</p>
-            
+            <h2>Our Latest Work</h2>
             <div class="gallery-container">
-                <!-- Replace these with your own images later -->
                 <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/a2b380/ffffff?text=Racket+1" alt="Racket 1">
+                    <img src="images/gallery-image-1.jpg" alt="Newly strung tennis racket 1">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/c7a59d/ffffff?text=Racket+2" alt="Racket 2">
+                    <img src="images/gallery-image-2.jpg" alt="Newly strung tennis racket 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/987c6b/ffffff?text=Racket+3" alt="Racket 3">
+                    <img src="images/gallery-image-3.jpg" alt="Newly strung tennis racket 3">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/7d7a6e/ffffff?text=Racket+4" alt="Racket 4">
+                    <img src="images/gallery-image-4.jpg" alt="Newly strung tennis racket 4">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/a2b380/ffffff?text=Racket+5" alt="Racket 5">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/c7a59d/ffffff?text=Racket+6" alt="Racket 6">
-                </div>
+            <p class="note">Each racket is strung with meticulous care and precision to ensure optimal performance.</p>
+        </section>
+
+        <section id="contact-info" class="section-block">
+            <h2>Ready to Get Strung?</h2>
+            <p>Contact us today to discuss your stringing needs or to book an appointment!</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/16475737561?text=Hello!%20I'm%20interested%20in%20your%20tennis%20stringing%20service." target="_blank" class="contact-button whatsapp-button">Message on WhatsApp</a>
+                <a href="mailto:eduloor17@live.com?subject=Tennis%20Stringing%20Inquiry" class="contact-button email-button">Send an Email</a>
             </div>
+            <p class="back-link"><a href="index.html">&larr; Back to Home</a></p>
         </section>
     </main>
 
@@ -59,39 +57,41 @@
         </div>
     </footer>
 
-    <!-- The Modal/Lightbox Element -->
-    <div id="imageModal" class="modal">
+    <div id="myModal" class="modal">
         <span class="close-btn">&times;</span>
-        <img class="modal-content" id="modalImage">
+        <img class="modal-content" id="img01">
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            const galleryItems = document.querySelectorAll(".gallery-item img");
-            const closeBtn = document.querySelector(".close-btn");
+        // Get the modal
+        var modal = document.getElementById("myModal");
 
-            // Open the modal when an image is clicked
-            galleryItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    modal.style.display = "block";
-                    modalImg.src = item.src;
-                });
-            });
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var galleryItems = document.getElementsByClassName("gallery-item");
+        var modalImg = document.getElementById("img01");
 
-            // Close the modal when the close button is clicked
-            closeBtn.addEventListener('click', () => {
+        for (var i = 0; i < galleryItems.length; i++) {
+            galleryItems[i].onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.children[0].src; // Get the src of the clicked image
+            }
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close-btn")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal content, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
-            });
-
-            // Close the modal when the user clicks outside the image
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            });
-        });
+            }
+        }
     </script>
+
 </body>
 </html>
