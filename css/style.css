@@ -1,8 +1,3 @@
-### `style.css` (Updated)
-
-I've added all the necessary CSS to style the modal overlay and the image within it. I also removed the old `:hover` effect for the gallery images.
-
-```css
 /* Basic Reset & Body Styling */
 body {
     margin: 0;
@@ -42,6 +37,7 @@ header {
 /* Navigation Bar */
 nav {
     margin-top: 20px;
+    text-align: center; /* This centers your navigation links */
 }
 
 nav a {
@@ -134,7 +130,7 @@ ul li {
     background-color: #00796b; /* Darker accent teal on hover */
 }
 
-.cta-string, .cta-gallery {
+.cta-string {
     text-align: center;
     margin-top: 30px;
 }
