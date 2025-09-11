@@ -242,7 +242,14 @@ footer p {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    cursor: pointer; /* Add a pointer cursor to indicate clickability */
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
 }
 
 /* Modal/Lightbox Styles */
