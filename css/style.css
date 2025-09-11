@@ -134,7 +134,7 @@ ul li {
     background-color: #00796b; /* Darker accent teal on hover */
 }
 
-.cta-string {
+.cta-string, .cta-gallery {
     text-align: center;
     margin-top: 30px;
 }
