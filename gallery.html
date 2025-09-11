@@ -36,6 +36,12 @@
                 <div class="gallery-item">
                     <img src="images/gallery-image-4.jpg" alt="Newly strung tennis racket 4">
                 </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-image-5.jpg" alt="Newly strung tennis racket 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery-image-6.jpg" alt="Newly strung tennis racket 6">
+                </div>
                 </div>
             <p class="note">Each racket is strung with meticulous care and precision to ensure optimal performance.</p>
         </section>
@@ -51,12 +57,6 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Precision Tennis Stringing. All rights reserved.</p>
-        </div>
-    </footer>
-
     <div id="myModal" class="modal">
         <span class="close-btn">&times;</span>
         <img class="modal-content" id="img01">
@@ -66,14 +66,15 @@
         // Get the modal
         var modal = document.getElementById("myModal");
 
-        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        // Get all gallery images
         var galleryItems = document.getElementsByClassName("gallery-item");
         var modalImg = document.getElementById("img01");
 
+        // Loop through each image and add a click event listener
         for (var i = 0; i < galleryItems.length; i++) {
             galleryItems[i].onclick = function() {
                 modal.style.display = "block";
-                modalImg.src = this.children[0].src; // Get the src of the clicked image
+                modalImg.src = this.children[0].src;
             }
         }
 
@@ -92,6 +93,5 @@
             }
         }
     </script>
-
 </body>
 </html>
