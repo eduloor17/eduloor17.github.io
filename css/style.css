@@ -320,3 +320,103 @@ footer p {
         width: 100%;
     }
 }
+
+/* --- Payment Form Styles --- */
+.payment-form-container {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+#payment-form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: block;
+    font-weight: 400;
+    margin: 0;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: #e6f7ff;
+    border-color: #007bff;
+    color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.input-with-dollar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 0.5rem;
+    background-color: #fff;
+}
+
+.input-with-dollar span {
+    color: #555;
+    font-size: 1.1rem;
+    margin-right: 0.25rem;
+}
+
+#string-price,
+#description {
+    width: 100%;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+#string-price:focus,
+#description:focus {
+    outline: none;
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: right;
+    margin-top: 1.5rem;
+    color: #333;
+}
+
+.payment-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+.etransfer-info {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
