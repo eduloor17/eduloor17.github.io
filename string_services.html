@@ -41,6 +41,40 @@
             </p>
         </section>
 
+        <section id="payment" class="section-block">
+            <h2>Secure Your Service</h2>
+            <p>Select your service and provide any special instructions below. You can pay securely with a credit card, Apple Pay, or send an e-transfer to get started.</p>
+
+            <div class="payment-form-container">
+                <form id="payment-form">
+                    <label for="service-options">Select Service:</label>
+                    <div class="radio-group" id="service-options">
+                        <input type="radio" id="service-20" name="service" value="20" data-label="24/48-hour service ($20)" checked>
+                        <label for="service-20">24/48-hour turnaround - $20</label>
+                        
+                        <input type="radio" id="service-25" name="service" value="25" data-label="Express service ($25)">
+                        <label for="service-25">Express Service (1-hour) - $25</label>
+                    </div>
+                    
+                    <label for="string-price">Cost of String (optional):</label>
+                    <div class="input-with-dollar">
+                        <span>$</span>
+                        <input type="number" id="string-price" name="string-price" placeholder="0.00" min="0" value="0.00">
+                    </div>
+        
+                    <label for="description">Order Notes (optional):</label>
+                    <textarea id="description" name="description" rows="4" placeholder="e.g., String type, tension (54lbs), contact info."></textarea>
+                    
+                    <div class="total-price">
+                        Total: $<span id="display-total">20.00</span>
+                    </div>
+        
+                    <button type="submit" class="button payment-button" id="pay-now-button">Pay Now</button>
+                    <p class="etransfer-info">Prefer e-transfer? Send the total amount to: <a href="mailto:your_email@example.com">your_email@example.com</a>. Please include your name and "Order Notes" in the e-transfer message!</p>
+                </form>
+            </div>
+        </section>
+        
         <section id="offers" class="section-block">
             <h2>Exclusive Offers</h2>
             <ul>
@@ -77,5 +111,49 @@
             <p>&copy; 2025 Precision Tennis Stringing. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const serviceRadios = document.querySelectorAll('input[name="service"]');
+        const stringPriceInput = document.getElementById('string-price');
+        const displayTotal = document.getElementById('display-total');
+        const payNowButton = document.getElementById('pay-now-button');
+
+        function calculateTotal() {
+            let servicePrice = parseFloat(document.querySelector('input[name="service"]:checked').value);
+            let stringPrice = parseFloat(stringPriceInput.value) || 0;
+            let total = servicePrice + stringPrice;
+            displayTotal.textContent = total.toFixed(2);
+        }
+
+        serviceRadios.forEach(radio => radio.addEventListener('change', calculateTotal));
+        stringPriceInput.addEventListener('input', calculateTotal);
+        
+        // Initial calculation on page load
+        calculateTotal();
+
+        // This is a placeholder. You'd replace this with your actual payment processing code.
+        payNowButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Stop the form from submitting normally
+            
+            const serviceLabel = document.querySelector('input[name="service"]:checked').dataset.label;
+            const stringCost = parseFloat(stringPriceInput.value) || 0;
+            const description = document.getElementById('description').value;
+            const totalAmount = displayTotal.textContent;
+
+            // Log values for demonstration
+            console.log("Order Details:");
+            console.log(`- Service: ${serviceLabel}`);
+            console.log(`- String Cost: $${stringCost.toFixed(2)}`);
+            console.log(`- Total: $${totalAmount}`);
+            console.log(`- Notes: ${description}`);
+
+            alert(`The total is $${totalAmount}. This is where you would connect to a payment gateway like Stripe or PayPal.`);
+            // e.g., Integrate with Stripe: stripe.redirectToCheckout({...});
+            // Or with PayPal: window.location.href = `https://www.paypal.com/...`;
+        });
+    });
+</script>
+    
 </body>
 </html>
