@@ -420,3 +420,150 @@ footer p {
     color: #666;
     margin-top: 1rem;
 }
+
+/* --- PERFECT TENSION CALCULATOR STYLES --- */
+#tension-calculator {
+    padding-bottom: 30px; /* Give it some extra room */
+}
+
+.calculator-container {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* Tension Setter (Slider Area) */
+.tension-setter {
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.tension-setter h3 {
+    text-align: center;
+    color: #007bff; /* Use your main brand color */
+    margin-top: 0;
+}
+.tension-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+#current-tension-value {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #28a745; /* Green for the result */
+    transition: color 0.3s;
+}
+.note-description {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* Custom Range Slider Styling (to match the pro example) */
+input[type="range"] {
+    width: 100%;
+    height: 10px;
+    -webkit-appearance: none;
+    background: #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: grab;
+    border: 3px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Attribute Grid (Control, Power, Spin) */
+.attribute-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.attribute-card {
+    border-left: 4px solid;
+    padding: 15px;
+    border-radius: 6px;
+    background: #fff;
+    text-align: center;
+}
+.attribute-card h4 {
+    font-size: 1.1em;
+    margin: 0;
+}
+.score {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin: 5px 0;
+}
+.attribute-label {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 5px;
+}
+.bar-container {
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.bar {
+    height: 100%;
+    transition: width 0.3s ease-out;
+}
+
+/* Color Coding for Attributes */
+.control { border-left-color: #007bff; }
+.control .score, .control h4 { color: #007bff; }
+.control .bar { background-color: #007bff; }
+
+.power { border-left-color: #dc3545; }
+.power .score, .power h4 { color: #dc3545; }
+.power .bar { background-color: #dc3545; }
+
+.spin { border-left-color: #ffc107; /* Yellow/Orange */ }
+.spin .score, .spin h4 { color: #ffc107; }
+.spin .bar { background-color: #ffc107; }
+
+/* Detailed Analysis Block */
+.detailed-analysis {
+    background: #e9f5ff; /* Light blue background */
+    border: 1px solid #b3e0ff;
+    padding: 15px;
+    border-radius: 6px;
+}
+.detailed-analysis h4 {
+    color: #007bff;
+    font-size: 1.2em;
+    margin-top: 0;
+}
+.tip-box {
+    background: #fff;
+    padding: 10px;
+    border-left: 3px solid #f0ad4e; /* Orange tip color */
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+.tip-recommendation {
+    font-size: 0.95em;
+    color: #333;
+    margin-bottom: 5px;
+}
