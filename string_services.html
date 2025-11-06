@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-</head>
+    </head>
 <body>
     <header>
         <div class="logo-container">
@@ -32,44 +32,99 @@
             <p>Use our interactive calculator to discover your **ideal string tension** and see how it affects **Control, Power, and Spin** instantly.</p>
 
             <div class="calculator-container">
+                
+                <div class="section-block" style="padding: 15px;">
+                    <h3 class="text-center" style="margin-top: 0; color: #00796b;">Calculator Mode</h3>
+                    <div id="mode-selector" style="display: flex; justify-content: space-around; gap: 10px;">
+                        <button class="button mode-button active-mode" data-mode="simple">Simple</button>
+                        <button class="button mode-button" data-mode="advanced">Advanced</button>
+                        <button class="button mode-button" data-mode="super-advanced">Super Advanced</button>
+                    </div>
+                </div>
+
                 <section class="tension-setter">
-                    <h3>Set Your Tension & Differential (in lbs)</h3>
+                    <h3>Set Your Tension (in lbs)</h3>
                     
-                    <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
-                        <div style="width: 45%;">
-                            <h4>Mains (Vertical) Tension</h4>
+                    <div id="simple-mode-inputs" class="mode-input-group active-group">
+                        <div style="width: 100%;">
+                            <h4>Tension (Mains & Crosses)</h4>
                             <div class="tension-display">
                                 <span>Min: 40 lbs</span>
-                                <span id="current-mains-value">55 lbs</span>
+                                <span id="simple-tension-value">55 lbs</span>
                                 <span>Max: 65 lbs</span>
                             </div>
                             <div class="slider-wrapper">
-                                <input type="range" id="mains-slider" min="40" max="65" value="55" step="1">
-                            </div>
-                        </div>
-
-                        <div style="width: 45%;">
-                            <h4>Crosses Drop (Differential)</h4>
-                            <div class="tension-display">
-                                <span>Drop: 0 lbs</span>
-                                <span id="current-differential-value">2 lbs</span>
-                                <span>Drop: 5 lbs</span>
-                            </div>
-                            <div class="slider-wrapper">
-                                <input type="range" id="differential-slider" min="0" max="5" value="2" step="1">
+                                <input type="range" id="simple-slider" min="40" max="65" value="55" step="1">
                             </div>
                         </div>
                     </div>
 
-                    <p style="text-align: center; font-size: 1.2em; font-weight: 700; color: #004d40; margin-top: 10px;">
-                        Final Setup: <span id="final-mains-display">55 lbs Mains</span> / <span id="final-crosses-display">53 lbs Crosses</span>
+                    <div id="advanced-mode-inputs" class="mode-input-group" style="display:none;">
+                        <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                            <div style="width: 45%;">
+                                <h4>Mains (Vertical) Tension</h4>
+                                <div class="tension-display">
+                                    <span>Min: 40 lbs</span>
+                                    <span id="adv-mains-value">55 lbs</span>
+                                    <span>Max: 65 lbs</span>
+                                </div>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="adv-mains-slider" min="40" max="65" value="55" step="1">
+                                </div>
+                            </div>
+
+                            <div style="width: 45%;">
+                                <h4>Crosses Drop (Differential)</h4>
+                                <div class="tension-display">
+                                    <span>Drop: 0 lbs</span>
+                                    <span id="adv-differential-value">2 lbs</span>
+                                    <span>Drop: 5 lbs</span>
+                                </div>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="adv-differential-slider" min="0" max="5" value="2" step="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="super-advanced-mode-inputs" class="mode-input-group" style="display:none;">
+                        <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                            <div style="width: 45%;">
+                                <h4>Mains (Vertical) Tension</h4>
+                                <div class="tension-display">
+                                    <span>Min: 40 lbs</span>
+                                    <span id="super-adv-mains-value">55 lbs</span>
+                                    <span>Max: 65 lbs</span>
+                                </div>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="super-adv-mains-slider" min="40" max="65" value="55" step="1">
+                                </div>
+                            </div>
+
+                            <div style="width: 45%;">
+                                <h4>Crosses (Horizontal) Tension</h4>
+                                <div class="tension-display">
+                                    <span>Min: 40 lbs</span>
+                                    <span id="super-adv-crosses-value">53 lbs</span>
+                                    <span>Max: 65 lbs</span>
+                                </div>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="super-adv-crosses-slider" min="40" max="65" value="53" step="1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <p id="final-setup-display" style="text-align: center; font-size: 1.2em; font-weight: 700; color: #004d40; margin-top: 10px; display: none;">
+                        Final Setup: <span id="final-mains-display">55 lbs Mains</span> / <span id="final-crosses-display">55 lbs Crosses</span>
                     </p>
 
                     <p style="text-align: center; font-size: 1.1em; font-weight: 500;">
-                        Average Tension Driving Scores: <span id="current-tension-value">54 lbs</span>
+                        Average Tension Driving Scores: <span id="current-tension-value">55 lbs</span>
                     </p>
 
-                    <p id="tension-description" class="note-description">**Balanced:** Great starting point for all-around play. (2 lbs drop is standard for increased feel).</p>
+                    <p id="tension-description" class="note-description">**Simple:** One tension for all strings is a great way to start.</p>
                 </section>
 
                 <section class="attribute-grid">
@@ -99,7 +154,7 @@
                     <h4>Detailed Tension Analysis & Tip</h4>
                     <p id="tension-recommendation" class="tip-recommendation">**Recommended for:** All-court players, standard setup, seeking consistency and depth.</p>
                     <div class="tip-box">
-                        <p><strong>Pro Tip:</strong> <span id="string-tip">This setup works great with co-poly strings.</span></p>
+                        <p><strong>Pro Tip:</strong> <span id="string-tip">This setup works great with basic poly (polyester) strings.</span></p>
                     </div>
                 </section>
             </div>
@@ -209,31 +264,32 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="contact-links">
-                <h2>Ready to get your racquet strung?</h2>
-                <p>Contact us today to discuss your stringing service or to book an appointment!</p>
-                <a href="https://wa.me/16475737561?text=Hello!%20I'm%20interested%20in%20your%20tennis%20stringing%20service." target="_blank" class="contact-button whatsapp-button">Message on WhatsApp</a>
-                <a href="mailto:eduloor17@live.com?subject=Tennis%20Stringing%20Inquiry" class="contact-button email-button">Send an Email</a>
-                <p class="back-link"><a href="index.html">&larr; Back to Home</a></p>
-            </div>
-            <p>&copy; 2025 Precision Tennis Stringing. All rights reserved.</p>
-        </div>
-    </footer>
-
     <script>
-    // --- PERFECT TENSION CALCULATOR LOGIC (MAINS + DIFFERENTIAL) ---
-    const mainsSlider = document.getElementById('mains-slider');
-    const differentialSlider = document.getElementById('differential-slider');
+    // --- PERFECT TENSION CALCULATOR LOGIC (SIMPLE, ADVANCED, SUPER ADVANCED MODES) ---
     
-    const mainsValueDisplay = document.getElementById('current-mains-value'); 
-    const differentialValueDisplay = document.getElementById('current-differential-value'); 
+    // --- MODE SELECTOR ELEMENTS ---
+    const modeButtons = document.querySelectorAll('.mode-button');
+    const inputGroups = document.querySelectorAll('.mode-input-group');
+    let currentMode = 'simple';
 
+    // --- SLIDER ELEMENTS ---
+    const simpleSlider = document.getElementById('simple-slider');
+    const advMainsSlider = document.getElementById('adv-mains-slider');
+    const advDifferentialSlider = document.getElementById('adv-differential-slider');
+    const superAdvMainsSlider = document.getElementById('super-adv-mains-slider');
+    const superAdvCrossesSlider = document.getElementById('super-adv-crosses-slider');
+
+    // --- DISPLAY ELEMENTS ---
+    const simpleValueDisplay = document.getElementById('simple-tension-value');
+    const advMainsValueDisplay = document.getElementById('adv-mains-value');
+    const advDifferentialValueDisplay = document.getElementById('adv-differential-value');
+    const superAdvMainsValueDisplay = document.getElementById('super-adv-mains-value');
+    const superAdvCrossesValueDisplay = document.getElementById('super-adv-crosses-value');
+    
+    const finalSetupDisplay = document.getElementById('final-setup-display');
     const finalMainsDisplay = document.getElementById('final-mains-display');
     const finalCrossesDisplay = document.getElementById('final-crosses-display');
     const averageTensionDisplay = document.getElementById('current-tension-value');
-
     const descDisplay = document.getElementById('tension-description');
     
     const controlScore = document.getElementById('control-score');
@@ -247,6 +303,8 @@
     const recommendationDisplay = document.getElementById('tension-recommendation');
     const stringTipDisplay = document.getElementById('string-tip');
 
+    // --- CORE CALCULATION LOGIC ---
+
     // Maps tension (40-65) to a score (0-100)
     function calculateScore(tension, type) {
         const minTension = 40;
@@ -256,13 +314,10 @@
         let score;
         
         if (type === 'control') {
-            // Higher average tension = more control (Range 50-100)
             score = ((tension - minTension) / range) * 50 + 50; 
         } else if (type === 'power') {
-            // Lower average tension = more power (Range 50-100)
             score = ((maxTension - tension) / range) * 50 + 50;
         } else if (type === 'spin') {
-            // Spin peaks around the middle (50-55 lbs)
             const peak = 52.5; 
             const maxDiff = Math.abs(peak - minTension);
             const diff = Math.abs(tension - peak);
@@ -273,24 +328,56 @@
     }
 
     function updateCalculator() {
-        const mainsTension = parseInt(mainsSlider.value);
-        const differentialDrop = parseInt(differentialSlider.value);
+        let mainsTension = 0;
+        let crossesTension = 0;
+        let differentialDrop = 0;
+
+        // 1. DETERMINE TENSIONS BASED ON CURRENT MODE
+        if (currentMode === 'simple') {
+            mainsTension = parseInt(simpleSlider.value);
+            crossesTension = mainsTension; // Equal tension
+            simpleValueDisplay.textContent = `${mainsTension} lbs`;
+            differentialDrop = 0;
+        } else if (currentMode === 'advanced') {
+            mainsTension = parseInt(advMainsSlider.value);
+            differentialDrop = parseInt(advDifferentialSlider.value);
+            crossesTension = mainsTension - differentialDrop;
+            
+            // Update mode-specific displays
+            advMainsValueDisplay.textContent = `${mainsTension} lbs`;
+            advDifferentialValueDisplay.textContent = `${differentialDrop} lbs`;
+
+        } else if (currentMode === 'super-advanced') {
+            mainsTension = parseInt(superAdvMainsSlider.value);
+            crossesTension = parseInt(superAdvCrossesSlider.value);
+            differentialDrop = mainsTension - crossesTension;
+
+            // Update mode-specific displays
+            superAdvMainsValueDisplay.textContent = `${mainsTension} lbs`;
+            superAdvCrossesValueDisplay.textContent = `${crossesTension} lbs`;
+        }
         
-        // Calculation: Crosses Tension is Mains Tension MINUS the Differential Drop
-        const crossesTension = mainsTension - differentialDrop;
-        
-        // Average Tension is used to drive Power/Control/Spin scores
+        // Ensure crosses tension doesn't go below 40 lbs for safety/logic
+        if (crossesTension < 40) {
+             crossesTension = 40;
+             if (currentMode === 'super-advanced') {
+                 superAdvCrossesSlider.value = 40; // Correct the slider if needed
+                 superAdvCrossesValueDisplay.textContent = `40 lbs`;
+             }
+        }
+
+        // Calculate Average Tension
         const averageTension = (mainsTension + crossesTension) / 2;
 
-        // --- Update Slider & Final Setup Displays ---
-        mainsValueDisplay.textContent = `${mainsTension} lbs`;
-        differentialValueDisplay.textContent = `${differentialDrop} lbs`;
-        
+        // --- UPDATE TENSION DISPLAYS ---
         finalMainsDisplay.textContent = `${mainsTension} lbs Mains`;
         finalCrossesDisplay.textContent = `${crossesTension} lbs Crosses`;
         averageTensionDisplay.textContent = `${averageTension.toFixed(0)} lbs`;
+        
+        // Only show "Final Setup" line for Advanced/Super Advanced modes
+        finalSetupDisplay.style.display = (currentMode === 'simple') ? 'none' : 'block';
 
-        // --- Calculate and Update Scores ---
+        // --- UPDATE ATTRIBUTE SCORES ---
         const control = calculateScore(averageTension, 'control');
         const power = calculateScore(averageTension, 'power');
         const spin = calculateScore(averageTension, 'spin');
@@ -303,7 +390,7 @@
         powerBar.style.width = `${power}%`;
         spinBar.style.width = `${spin}%`;
 
-        // --- Update Descriptions and Tips ---
+        // --- UPDATE DESCRIPTIONS AND TIPS ---
         let desc = "";
         let recommendation = "";
         let tip = "";
@@ -327,13 +414,19 @@
             tip = "Only use a high-quality **Poly** string at this tension. Be mindful of arm comfort.";
         }
         
-        // 2. Add Differential Commentary
-        if (differentialDrop > 3) {
-            desc += " **(High Differential Drop:** This maximizes pocketing and spin potential.)";
-        } else if (differentialDrop > 0) {
-            desc += ` **(${differentialDrop} lbs Drop:** Standard professional practice for enhanced feel and stability.)`;
-        } else if (differentialDrop === 0) {
-            desc += " **(Zero Differential:** Provides the most consistent, but firmest, stringbed response.)";
+        // 2. Add Mode/Differential Commentary
+        if (currentMode === 'simple') {
+            desc = `**Simple Setup:** Balanced tension for predictable response. ${desc}`;
+        } else if (currentMode === 'advanced' || currentMode === 'super-advanced') {
+             if (differentialDrop > 3) {
+                desc += " **(High Differential Drop:** This maximizes pocketing and spin potential.)";
+            } else if (differentialDrop > 0) {
+                desc += ` **(${differentialDrop} lbs Drop:** Standard professional practice for enhanced feel and stability.)`;
+            } else if (differentialDrop === 0) {
+                desc += " **(Zero Differential:** Provides the most consistent, but firmest, stringbed response.)";
+            } else if (differentialDrop < 0) {
+                 desc += " **(Reverse Differential:** Lower Mains tension slightly increases dwell time and feel.)";
+            }
         }
 
         descDisplay.innerHTML = desc;
@@ -341,9 +434,40 @@
         stringTipDisplay.innerHTML = tip;
     }
 
-    // Event listeners for BOTH new sliders
-    mainsSlider.addEventListener('input', updateCalculator);
-    differentialSlider.addEventListener('input', updateCalculator);
+    // --- MODE SWITCHING FUNCTION ---
+    function switchMode(mode) {
+        currentMode = mode;
+
+        // Hide all input groups and remove active class from all buttons
+        inputGroups.forEach(group => group.style.display = 'none');
+        modeButtons.forEach(button => button.classList.remove('active-mode'));
+
+        // Show the selected input group and set the active button class
+        document.getElementById(`${mode}-mode-inputs`).style.display = 'block';
+        document.querySelector(`.mode-button[data-mode="${mode}"]`).classList.add('active-mode');
+
+        // Force a calculator update for the new mode's default values
+        updateCalculator();
+    }
+
+
+    // --- EVENT LISTENERS ---
+    
+    // Mode Buttons
+    modeButtons.forEach(button => {
+        button.addEventListener('click', () => switchMode(button.dataset.mode));
+    });
+
+    // Simple Slider
+    simpleSlider.addEventListener('input', updateCalculator);
+
+    // Advanced Sliders
+    advMainsSlider.addEventListener('input', updateCalculator);
+    advDifferentialSlider.addEventListener('input', updateCalculator);
+
+    // Super Advanced Sliders
+    superAdvMainsSlider.addEventListener('input', updateCalculator);
+    superAdvCrossesSlider.addEventListener('input', updateCalculator);
 
     // Initial load call
     updateCalculator();
@@ -351,8 +475,6 @@
 
     // --- SERVICE/PAYMENT CALCULATOR LOGIC ---
     document.addEventListener('DOMContentLoaded', function() {
-        // Since updateCalculator() is called outside this listener now, we ensure it's still called on page load
-        // by placing it after the DOM is fully loaded.
         
         const serviceRadios = document.querySelectorAll('input[name="service"]');
         const stringPriceInput = document.getElementById('string-price');
@@ -371,8 +493,6 @@
         serviceRadios.forEach(radio => radio.addEventListener('change', calculateTotal));
         stringPriceInput.addEventListener('input', calculateTotal);
         
-        // Initial calculation for both sections on page load
-        // updateCalculator is called outside this listener, so we only need to call calculateTotal here:
         calculateTotal(); 
 
         // Placeholder for payment button
