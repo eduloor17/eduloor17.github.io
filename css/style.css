@@ -567,3 +567,71 @@ input[type="range"]::-webkit-slider-thumb {
     color: #333;
     margin-bottom: 5px;
 }
+
+/* --- NEW STYLES FOR MULTI-MODE CALCULATOR & PAYMENT --- */
+
+/* Calculator Mode Buttons */
+.mode-button {
+    /* Inherit base button style, but make them less bulky */
+    display: inline-block;
+    background-color: #e0f2f1; /* Very light teal background */
+    color: #00796b; /* Accent teal text */
+    padding: 10px 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border: 2px solid #009688; /* Border matches accent color */
+    flex-grow: 1; /* Allows them to fill space */
+    margin: 0; 
+    border-radius: 5px; /* Matches other buttons */
+}
+
+.mode-button:hover {
+    background-color: #c5e4e3; /* Slightly darker light background on hover */
+    color: #004d40;
+}
+
+.mode-button.active-mode {
+    background-color: #009688; /* Active accent color */
+    color: #ffffff;
+    border-color: #004d40; /* Darker border when active */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 700;
+}
+
+/* Specific styling for the final tension display in Advanced/Super Advanced modes */
+#final-setup-display {
+    padding: 10px;
+    border: 1px dashed #009688;
+    background-color: #f0fdfc;
+    border-radius: 4px;
+}
+
+/* E-transfer Instructions */
+.etransfer-instructions {
+    background-color: #fff;
+    border: 1px solid #b2dfdb;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+}
+
+.etransfer-instructions h4 {
+    color: #00796b;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.etransfer-instructions ol {
+    list-style: decimal;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.etransfer-instructions li {
+    background-color: transparent; /* Override ul li background */
+    border-left: none; /* Override ul li border */
+    padding: 5px 0;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
