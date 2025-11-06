@@ -23,8 +23,8 @@
     <main class="container">
         <section id="intro" class="section-block">
             <h2>E X P E R T - R A C Q U E T - S T R I N G I N G</h2>
-            <p>We offer unparalleled precision and personalized service to optimize your racquet's performance. As a dedicated local service, we are your trusted partner for stringing needs, serving all players from <strong>aspiring amateurs</strong> to <strong>seasoned competitors.</strong></p>
-            <p>We utilize an <strong>electric tensioner</strong>, the same advanced technology trusted by top professionals like <strong>Jannik Sinner</strong> or <strong>Carlos Alcaraz</strong>, ensuring consistent and accurate string tension every time.</p>
+            <p>We offer unparalleled precision and personalized service to optimize your racquet's performance. As a dedicated local service, we are your trusted partner for stringing needs, serving all players from **aspiring amateurs** to **seasoned competitors.**</p>
+            <p>We utilize an **electric tensioner**, the same advanced technology trusted by top professionals like **Jannik Sinner** or **Carlos Alcaraz**, ensuring consistent and accurate string tension every time.</p>
         </section>
 
         <section id="tension-calculator" class="section-block">
@@ -33,19 +33,43 @@
 
             <div class="calculator-container">
                 <section class="tension-setter">
-                    <h3>Set Your Tension (in pounds/lbs)</h3>
+                    <h3>Set Your Tension & Differential (in lbs)</h3>
                     
-                    <div class="tension-display">
-                        <span>Minimum: 40 lbs</span>
-                        <span id="current-tension-value">55 lbs</span>
-                        <span>Maximum: 65 lbs</span>
+                    <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                        <div style="width: 45%;">
+                            <h4>Mains (Vertical) Tension</h4>
+                            <div class="tension-display">
+                                <span>Min: 40 lbs</span>
+                                <span id="current-mains-value">55 lbs</span>
+                                <span>Max: 65 lbs</span>
+                            </div>
+                            <div class="slider-wrapper">
+                                <input type="range" id="mains-slider" min="40" max="65" value="55" step="1">
+                            </div>
+                        </div>
+
+                        <div style="width: 45%;">
+                            <h4>Crosses Drop (Differential)</h4>
+                            <div class="tension-display">
+                                <span>Drop: 0 lbs</span>
+                                <span id="current-differential-value">2 lbs</span>
+                                <span>Drop: 5 lbs</span>
+                            </div>
+                            <div class="slider-wrapper">
+                                <input type="range" id="differential-slider" min="0" max="5" value="2" step="1">
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="slider-wrapper">
-                        <input type="range" id="tension-slider" min="40" max="65" value="55" step="1">
-                    </div>
+                    <p style="text-align: center; font-size: 1.2em; font-weight: 700; color: #004d40; margin-top: 10px;">
+                        Final Setup: <span id="final-mains-display">55 lbs Mains</span> / <span id="final-crosses-display">53 lbs Crosses</span>
+                    </p>
 
-                    <p id="tension-description" class="note-description">**Balanced:** Great starting point for all-around play.</p>
+                    <p style="text-align: center; font-size: 1.1em; font-weight: 500;">
+                        Average Tension Driving Scores: <span id="current-tension-value">54 lbs</span>
+                    </p>
+
+                    <p id="tension-description" class="note-description">**Balanced:** Great starting point for all-around play. (2 lbs drop is standard for increased feel).</p>
                 </section>
 
                 <section class="attribute-grid">
@@ -99,31 +123,34 @@
             <h2>Secure Your Service</h2>
             <p>Select your service and provide any special instructions below. You can pay securely with a credit card, Apple Pay, or send an e-transfer to get started.</p>
 
-            <form id="stringing-order-form">
-                <div class="form-group">
-                    <label>Select Service:</label><br>
-                    <input type="radio" id="service-standard" name="service" value="20" data-label="Standard BYO String" checked>
-                    <label for="service-standard">$20 Standard (24/48hr)</label><br>
-                    <input type="radio" id="service-express" name="service" value="25" data-label="Express BYO String">
-                    <label for="service-express">$25 Express (<1hr)</label>
-                </div>
+            <div class="payment-form-container">
+                <form id="stringing-order-form">
+                    <label>Select Service:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="service-standard" name="service" value="20" data-label="Standard BYO String" checked>
+                        <label for="service-standard">$20 Standard (24/48hr)</label>
+                        
+                        <input type="radio" id="service-express" name="service" value="25" data-label="Express BYO String">
+                        <label for="service-express">$25 Express (<1hr)</label>
+                    </div>
 
-                <div class="form-group">
                     <label for="string-price">Cost of String (if purchased from us - $0 if BYO):</label>
-                    <input type="number" id="string-price" placeholder="e.g., 10, 15, or 0" value="0" min="0">
-                </div>
-                
-                <div class="form-group">
+                    <div class="input-with-dollar">
+                        <span>$</span>
+                        <input type="number" id="string-price" placeholder="e.g., 10, 15, or 0" value="0" min="0">
+                    </div>
+                    
                     <label for="description">Stringing Notes (Tension, String Type, etc.):</label>
-                    <textarea id="description" rows="3" placeholder="e.g., 52 lbs, Hybrid (Poly Mains/Syn Gut Crosses), Please replace my grip."></textarea>
-                </div>
+                    <textarea id="description" rows="3" placeholder="e.g., Mains: 55 lbs, Crosses: 52 lbs, Hybrid (Poly/Syn Gut), Please replace my grip."></textarea>
 
-                <div class="total-display">
-                    <strong>Total Due: $<span id="display-total">20.00</span></strong>
-                </div>
+                    <div class="total-price">
+                        <strong>Total Due: $<span id="display-total">20.00</span></strong>
+                    </div>
 
-                <button type="button" id="pay-now-button" class="button primary-button">Calculate & Pay Now (Demo)</button>
-            </form>
+                    <button type="button" id="pay-now-button" class="button payment-button">Calculate & Pay Now (Demo)</button>
+                </form>
+            </div>
+
             <p style="margin-top: 20px;">Or use the direct payment buttons below:</p>
 
             <script async
@@ -158,15 +185,28 @@
                             <li>**Crucially**, in the "Message" box of the e-transfer, copy and paste the order details from the email you just created.</li>
                         </ol>
                     </div>
-                
-            </form>
         </section>
-        
         <section id="offers" class="section-block">
-            </section>
+            <h2>Exclusive Offers</h2>
+            <ul>
+                <li><strong>Loyalty Program:</strong> String **3 racquets** with us, and get your **4th stringing service free**! (Automatically tracked for your convenience.)</li>
+                <li><strong>Referral Program:</strong> Refer a friend and get a gift based on their first order!
+                    <ul>
+                        <li>If they order a stringing service, you get a free overgrip.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
         <section id="experience" class="section-block">
-            </section>
+            <h2>The Advantage of Experience</h2>
+            <p>With years of experience playing and coaching tennis, from academic courts back home to the vibrant tennis community here in Toronto, I've had the privilege of playing with and analyzing countless racquet and string combinations. This hands-on expertise allows me to not only meticulously string your racquet but also to understand how the right stringing can truly unlock your potential on the court. I'm passionate about helping you find that perfect setup that enhances your power, control, and feel, allowing you to play your best tennis.</p>
+            <h2>See Our Work</h2>
+            <p>Curious about the quality of our craftsmanship? Take a look at our gallery to see some of the rackets we've recently worked on</p>
+            <p class="cta-gallery">
+                <a href="gallery.html" class="button">Recent Racket Stringing &rarr;</a>
+            </p>
+        </section>
     </main>
 
     <footer>
@@ -183,9 +223,17 @@
     </footer>
 
     <script>
-    // --- PERFECT TENSION CALCULATOR LOGIC ---
-    const slider = document.getElementById('tension-slider');
-    const valueDisplay = document.getElementById('current-tension-value');
+    // --- PERFECT TENSION CALCULATOR LOGIC (MAINS + DIFFERENTIAL) ---
+    const mainsSlider = document.getElementById('mains-slider');
+    const differentialSlider = document.getElementById('differential-slider');
+    
+    const mainsValueDisplay = document.getElementById('current-mains-value'); 
+    const differentialValueDisplay = document.getElementById('current-differential-value'); 
+
+    const finalMainsDisplay = document.getElementById('final-mains-display');
+    const finalCrossesDisplay = document.getElementById('final-crosses-display');
+    const averageTensionDisplay = document.getElementById('current-tension-value');
+
     const descDisplay = document.getElementById('tension-description');
     
     const controlScore = document.getElementById('control-score');
@@ -199,6 +247,7 @@
     const recommendationDisplay = document.getElementById('tension-recommendation');
     const stringTipDisplay = document.getElementById('string-tip');
 
+    // Maps tension (40-65) to a score (0-100)
     function calculateScore(tension, type) {
         const minTension = 40;
         const maxTension = 65;
@@ -207,26 +256,44 @@
         let score;
         
         if (type === 'control') {
+            // Higher average tension = more control (Range 50-100)
             score = ((tension - minTension) / range) * 50 + 50; 
         } else if (type === 'power') {
+            // Lower average tension = more power (Range 50-100)
             score = ((maxTension - tension) / range) * 50 + 50;
         } else if (type === 'spin') {
+            // Spin peaks around the middle (50-55 lbs)
             const peak = 52.5; 
             const maxDiff = Math.abs(peak - minTension);
             const diff = Math.abs(tension - peak);
             score = 100 - (diff / maxDiff) * 35;
         }
         
-        return Math.max(65, Math.min(100, score)).toFixed(0);
+        return Math.max(65, Math.min(100, score)).toFixed(0); 
     }
 
-    function updateCalculator(tension) {
-        tension = parseInt(tension);
-        valueDisplay.textContent = `${tension} lbs`;
+    function updateCalculator() {
+        const mainsTension = parseInt(mainsSlider.value);
+        const differentialDrop = parseInt(differentialSlider.value);
+        
+        // Calculation: Crosses Tension is Mains Tension MINUS the Differential Drop
+        const crossesTension = mainsTension - differentialDrop;
+        
+        // Average Tension is used to drive Power/Control/Spin scores
+        const averageTension = (mainsTension + crossesTension) / 2;
 
-        const control = calculateScore(tension, 'control');
-        const power = calculateScore(tension, 'power');
-        const spin = calculateScore(tension, 'spin');
+        // --- Update Slider & Final Setup Displays ---
+        mainsValueDisplay.textContent = `${mainsTension} lbs`;
+        differentialValueDisplay.textContent = `${differentialDrop} lbs`;
+        
+        finalMainsDisplay.textContent = `${mainsTension} lbs Mains`;
+        finalCrossesDisplay.textContent = `${crossesTension} lbs Crosses`;
+        averageTensionDisplay.textContent = `${averageTension.toFixed(0)} lbs`;
+
+        // --- Calculate and Update Scores ---
+        const control = calculateScore(averageTension, 'control');
+        const power = calculateScore(averageTension, 'power');
+        const spin = calculateScore(averageTension, 'spin');
 
         controlScore.textContent = control;
         powerScore.textContent = power;
@@ -236,26 +303,37 @@
         powerBar.style.width = `${power}%`;
         spinBar.style.width = `${spin}%`;
 
+        // --- Update Descriptions and Tips ---
         let desc = "";
         let recommendation = "";
         let tip = "";
-
-        if (tension <= 45) {
-            desc = "**Ultra Power:** Max repulsion, soft feel. Requires more swing control.";
+        
+        // 1. Base description driven by AVERAGE tension
+        if (averageTension <= 45) {
+            desc = "**Ultra Power:** Max repulsion, soft feel.";
             recommendation = "**Recommended for:** Beginners, comfort seekers, or those with slower swing speeds.";
-            tip = "For these low tensions, a **Multifilament or Natural Gut** will feel best. If using Poly, ensure it's a soft, comfortable one.";
-        } else if (tension <= 51) {
-            desc = "**High Power/High Spin:** The modern standard. Great pocketing and good depth.";
+            tip = "For these low tensions, a **Multifilament or Natural Gut** will feel best.";
+        } else if (averageTension <= 51) {
+            desc = "**High Power/High Spin:** The modern standard. Great pocketing and depth.";
             recommendation = "**Recommended for:** Intermediate to advanced baseliners with moderate to fast swing speeds.";
             tip = "This is the optimal range for **Polyester (Poly)** strings to maximize spin and feel, especially in a hybrid setup.";
-        } else if (tension <= 58) {
+        } else if (averageTension <= 58) {
             desc = "**Balanced Performance:** The all-around sweet spot for consistency, power, and control.";
             recommendation = "**Recommended for:** All-court players looking for a predictable and reliable stringbed.";
             tip = "A **Poly/Synthetic Gut Hybrid** works excellently here to balance durability (poly mains) and comfort (syn gut crosses).";
-        } else if (tension <= 65) {
+        } else if (averageTension <= 65) {
             desc = "**Maximum Control:** Very firm feel for ultimate precision and directional stability.";
             recommendation = "**Recommended for:** Advanced players with powerful, fast swings who prioritize placement above all else.";
-            tip = "Only use a high-quality **Poly** string at this tension. Be mindful of arm comfort and dynamic tension loss, which is noticeable sooner.";
+            tip = "Only use a high-quality **Poly** string at this tension. Be mindful of arm comfort.";
+        }
+        
+        // 2. Add Differential Commentary
+        if (differentialDrop > 3) {
+            desc += " **(High Differential Drop:** This maximizes pocketing and spin potential.)";
+        } else if (differentialDrop > 0) {
+            desc += ` **(${differentialDrop} lbs Drop:** Standard professional practice for enhanced feel and stability.)`;
+        } else if (differentialDrop === 0) {
+            desc += " **(Zero Differential:** Provides the most consistent, but firmest, stringbed response.)";
         }
 
         descDisplay.innerHTML = desc;
@@ -263,20 +341,25 @@
         stringTipDisplay.innerHTML = tip;
     }
 
-    // Event listener for the calculator slider
-    document.getElementById('tension-slider').addEventListener('input', (e) => {
-        updateCalculator(e.target.value);
-    });
+    // Event listeners for BOTH new sliders
+    mainsSlider.addEventListener('input', updateCalculator);
+    differentialSlider.addEventListener('input', updateCalculator);
+
+    // Initial load call
+    updateCalculator();
+
 
     // --- SERVICE/PAYMENT CALCULATOR LOGIC ---
     document.addEventListener('DOMContentLoaded', function() {
+        // Since updateCalculator() is called outside this listener now, we ensure it's still called on page load
+        // by placing it after the DOM is fully loaded.
+        
         const serviceRadios = document.querySelectorAll('input[name="service"]');
         const stringPriceInput = document.getElementById('string-price');
         const displayTotal = document.getElementById('display-total');
         const payNowButton = document.getElementById('pay-now-button');
 
         function calculateTotal() {
-            // Ensure a radio button is checked before trying to get its value
             const checkedService = document.querySelector('input[name="service"]:checked');
             let servicePrice = checkedService ? parseFloat(checkedService.value) : 0;
             
@@ -289,14 +372,16 @@
         stringPriceInput.addEventListener('input', calculateTotal);
         
         // Initial calculation for both sections on page load
-        updateCalculator(document.getElementById('tension-slider').value); // Tension Calc
-        calculateTotal(); // Payment Calc
+        // updateCalculator is called outside this listener, so we only need to call calculateTotal here:
+        calculateTotal(); 
 
         // Placeholder for payment button
         payNowButton.addEventListener('click', function(event) {
             event.preventDefault(); 
             
-            const serviceLabel = document.querySelector('input[name="service"]:checked').dataset.label;
+            const checkedService = document.querySelector('input[name="service"]:checked');
+            const serviceLabel = checkedService ? checkedService.dataset.label : "N/A";
+
             const stringCost = parseFloat(stringPriceInput.value) || 0;
             const description = document.getElementById('description').value;
             const totalAmount = displayTotal.textContent;
@@ -311,6 +396,5 @@
         });
     });
     </script>
-    
 </body>
 </html>
