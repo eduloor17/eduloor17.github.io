@@ -15,8 +15,8 @@
             <img src="images/tennis-logo.png" alt="Your Tennis Stringing Business Logo">
         </div>
         <div class="container">
-             <h1>Precision Tennis</h1>
-             <p class="tagline">Your Home for Tennis Excellence</p>
+              <h1>Precision Tennis</h1>
+              <p class="tagline">Your Home for Tennis Excellence</p>
         </div>
     </header>
 
@@ -24,7 +24,61 @@
         <section id="intro" class="section-block">
             <h2>E X P E R T - R A C Q U E T - S T R I N G I N G</h2>
             <p>We offer unparalleled precision and personalized service to optimize your racquet's performance. As a dedicated local service, we are your trusted partner for stringing needs, serving all players from <strong>aspiring amateurs</strong> to <strong>seasoned competitors.</strong></p>
-            <p>We utilize an <strong>electric tensioner</strong>, the same advanced technology trusted by top professionals like <strong>Jannik Sinner</strong> or <strong>Carlos Alcaraz</strong>, ensuring consistent and accurate string tension every time.</p>
+            <p>We utilize an <strong>electric tensioner</strong>, the same advanced technology trusted by top professionals like <strong>Jannik Sinner</strong> or <strong>Carlos Alcaraz</strong>, ensuring consistent and accurate string tension every time.</p>
+        </section>
+
+        <section id="tension-calculator" class="section-block">
+            <h2>🎾 Perfect Tension Calculator</h2>
+            <p>Use our interactive calculator to discover your **ideal string tension** and see how it affects **Control, Power, and Spin** instantly.</p>
+
+            <div class="calculator-container">
+                <section class="tension-setter">
+                    <h3>Set Your Tension (in pounds/lbs)</h3>
+                    
+                    <div class="tension-display">
+                        <span>Minimum: 40 lbs</span>
+                        <span id="current-tension-value">55 lbs</span>
+                        <span>Maximum: 65 lbs</span>
+                    </div>
+
+                    <div class="slider-wrapper">
+                        <input type="range" id="tension-slider" min="40" max="65" value="55" step="1">
+                    </div>
+
+                    <p id="tension-description" class="note-description">**Balanced:** Great starting point for all-around play.</p>
+                </section>
+
+                <section class="attribute-grid">
+                    <div class="attribute-card control">
+                        <h4>Control</h4>
+                        <div class="score" id="control-score">70</div>
+                        <div class="bar-container"><div class="bar" id="control-bar" style="width: 70%;"></div></div>
+                        <p class="attribute-label">Placement precision.</p>
+                    </div>
+                    
+                    <div class="attribute-card power">
+                        <h4>Power</h4>
+                        <div class="score" id="power-score">70</div>
+                        <div class="bar-container"><div class="bar" id="power-bar" style="width: 70%;"></div></div>
+                        <p class="attribute-label">Ball speed and depth.</p>
+                    </div>
+
+                    <div class="attribute-card spin">
+                        <h4>Spin</h4>
+                        <div class="score" id="spin-score">85</div>
+                        <div class="bar-container"><div class="bar" id="spin-bar" style="width: 85%;"></div></div>
+                        <p class="attribute-label">Rotation generation.</p>
+                    </div>
+                </section>
+                
+                <section class="detailed-analysis">
+                    <h4>Detailed Tension Analysis & Tip</h4>
+                    <p id="tension-recommendation" class="tip-recommendation">**Recommended for:** All-court players, standard setup, seeking consistency and depth.</p>
+                    <div class="tip-box">
+                        <p><strong>Pro Tip:</strong> <span id="string-tip">This setup works great with co-poly strings.</span></p>
+                    </div>
+                </section>
+            </div>
         </section>
         <section id="services" class="section-block">
             <h2>Our Stringing Services</h2>
@@ -44,6 +98,33 @@
         <section id="payment" class="section-block">
             <h2>Secure Your Service</h2>
             <p>Select your service and provide any special instructions below. You can pay securely with a credit card, Apple Pay, or send an e-transfer to get started.</p>
+
+            <form id="stringing-order-form">
+                <div class="form-group">
+                    <label>Select Service:</label><br>
+                    <input type="radio" id="service-standard" name="service" value="20" data-label="Standard BYO String" checked>
+                    <label for="service-standard">$20 Standard (24/48hr)</label><br>
+                    <input type="radio" id="service-express" name="service" value="25" data-label="Express BYO String">
+                    <label for="service-express">$25 Express (<1hr)</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="string-price">Cost of String (if purchased from us - $0 if BYO):</label>
+                    <input type="number" id="string-price" placeholder="e.g., 10, 15, or 0" value="0" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Stringing Notes (Tension, String Type, etc.):</label>
+                    <textarea id="description" rows="3" placeholder="e.g., 52 lbs, Hybrid (Poly Mains/Syn Gut Crosses), Please replace my grip."></textarea>
+                </div>
+
+                <div class="total-display">
+                    <strong>Total Due: $<span id="display-total">20.00</span></strong>
+                </div>
+
+                <button type="button" id="pay-now-button" class="button primary-button">Calculate & Pay Now (Demo)</button>
+            </form>
+            <p style="margin-top: 20px;">Or use the direct payment buttons below:</p>
 
             <script async
               src="https://js.stripe.com/v3/buy-button.js">
@@ -77,33 +158,15 @@
                             <li>**Crucially**, in the "Message" box of the e-transfer, copy and paste the order details from the email you just created.</li>
                         </ol>
                     </div>
-                    
-                </form>
-            </div>
+                
+            </form>
         </section>
         
         <section id="offers" class="section-block">
-            <h2>Exclusive Offers</h2>
-            <ul>
-                <li><strong>Loyalty Program:</strong> String <strong>3 racquets</strong> with us, and get your <strong>4th stringing service free</strong>! (Automatically tracked for your convenience.)</li>
-                <li><strong>Referral Program:</strong> Refer a friend and get a gift based on their first order!
-                    <ul>
-                        <li>If they order a stringing service, you get a free overgrip.</li>
-                    
-                    </ul>
-                </li>
-            </ul>
-        </section>
+            </section>
 
         <section id="experience" class="section-block">
-            <h2>The Advantage of Experience</h2>
-            <p>With years of experience playing and coaching tennis, from academic courts back home to the vibrant tennis community here in Toronto, I've had the privilege of playing with and analyzing countless racquet and string combinations. This hands-on expertise allows me to not only meticulously string your racquet but also to understand how the right stringing can truly unlock your potential on the court. I'm passionate about helping you find that perfect setup that enhances your power, control, and feel, allowing you to play your best tennis.</p>
-            <h2>See Our Work</h2>
-            <p>Curious about the quality of our craftsmanship? Take a look at our gallery to see some of the rackets we've recently worked on</p>
-            <p class="cta-gallery">
-                <a href="gallery.html" class="button">Recent Racket Stringing &rarr;</a>
-            </p>
-        </section>
+            </section>
     </main>
 
     <footer>
@@ -120,6 +183,92 @@
     </footer>
 
     <script>
+    // --- PERFECT TENSION CALCULATOR LOGIC ---
+    const slider = document.getElementById('tension-slider');
+    const valueDisplay = document.getElementById('current-tension-value');
+    const descDisplay = document.getElementById('tension-description');
+    
+    const controlScore = document.getElementById('control-score');
+    const powerScore = document.getElementById('power-score');
+    const spinScore = document.getElementById('spin-score');
+    
+    const controlBar = document.getElementById('control-bar');
+    const powerBar = document.getElementById('power-bar');
+    const spinBar = document.getElementById('spin-bar');
+    
+    const recommendationDisplay = document.getElementById('tension-recommendation');
+    const stringTipDisplay = document.getElementById('string-tip');
+
+    function calculateScore(tension, type) {
+        const minTension = 40;
+        const maxTension = 65;
+        const range = maxTension - minTension;
+        
+        let score;
+        
+        if (type === 'control') {
+            score = ((tension - minTension) / range) * 50 + 50; 
+        } else if (type === 'power') {
+            score = ((maxTension - tension) / range) * 50 + 50;
+        } else if (type === 'spin') {
+            const peak = 52.5; 
+            const maxDiff = Math.abs(peak - minTension);
+            const diff = Math.abs(tension - peak);
+            score = 100 - (diff / maxDiff) * 35;
+        }
+        
+        return Math.max(65, Math.min(100, score)).toFixed(0);
+    }
+
+    function updateCalculator(tension) {
+        tension = parseInt(tension);
+        valueDisplay.textContent = `${tension} lbs`;
+
+        const control = calculateScore(tension, 'control');
+        const power = calculateScore(tension, 'power');
+        const spin = calculateScore(tension, 'spin');
+
+        controlScore.textContent = control;
+        powerScore.textContent = power;
+        spinScore.textContent = spin;
+
+        controlBar.style.width = `${control}%`;
+        powerBar.style.width = `${power}%`;
+        spinBar.style.width = `${spin}%`;
+
+        let desc = "";
+        let recommendation = "";
+        let tip = "";
+
+        if (tension <= 45) {
+            desc = "**Ultra Power:** Max repulsion, soft feel. Requires more swing control.";
+            recommendation = "**Recommended for:** Beginners, comfort seekers, or those with slower swing speeds.";
+            tip = "For these low tensions, a **Multifilament or Natural Gut** will feel best. If using Poly, ensure it's a soft, comfortable one.";
+        } else if (tension <= 51) {
+            desc = "**High Power/High Spin:** The modern standard. Great pocketing and good depth.";
+            recommendation = "**Recommended for:** Intermediate to advanced baseliners with moderate to fast swing speeds.";
+            tip = "This is the optimal range for **Polyester (Poly)** strings to maximize spin and feel, especially in a hybrid setup.";
+        } else if (tension <= 58) {
+            desc = "**Balanced Performance:** The all-around sweet spot for consistency, power, and control.";
+            recommendation = "**Recommended for:** All-court players looking for a predictable and reliable stringbed.";
+            tip = "A **Poly/Synthetic Gut Hybrid** works excellently here to balance durability (poly mains) and comfort (syn gut crosses).";
+        } else if (tension <= 65) {
+            desc = "**Maximum Control:** Very firm feel for ultimate precision and directional stability.";
+            recommendation = "**Recommended for:** Advanced players with powerful, fast swings who prioritize placement above all else.";
+            tip = "Only use a high-quality **Poly** string at this tension. Be mindful of arm comfort and dynamic tension loss, which is noticeable sooner.";
+        }
+
+        descDisplay.innerHTML = desc;
+        recommendationDisplay.innerHTML = recommendation;
+        stringTipDisplay.innerHTML = tip;
+    }
+
+    // Event listener for the calculator slider
+    document.getElementById('tension-slider').addEventListener('input', (e) => {
+        updateCalculator(e.target.value);
+    });
+
+    // --- SERVICE/PAYMENT CALCULATOR LOGIC ---
     document.addEventListener('DOMContentLoaded', function() {
         const serviceRadios = document.querySelectorAll('input[name="service"]');
         const stringPriceInput = document.getElementById('string-price');
@@ -127,7 +276,10 @@
         const payNowButton = document.getElementById('pay-now-button');
 
         function calculateTotal() {
-            let servicePrice = parseFloat(document.querySelector('input[name="service"]:checked').value);
+            // Ensure a radio button is checked before trying to get its value
+            const checkedService = document.querySelector('input[name="service"]:checked');
+            let servicePrice = checkedService ? parseFloat(checkedService.value) : 0;
+            
             let stringPrice = parseFloat(stringPriceInput.value) || 0;
             let total = servicePrice + stringPrice;
             displayTotal.textContent = total.toFixed(2);
@@ -136,19 +288,19 @@
         serviceRadios.forEach(radio => radio.addEventListener('change', calculateTotal));
         stringPriceInput.addEventListener('input', calculateTotal);
         
-        // Initial calculation on page load
-        calculateTotal();
+        // Initial calculation for both sections on page load
+        updateCalculator(document.getElementById('tension-slider').value); // Tension Calc
+        calculateTotal(); // Payment Calc
 
-        // This is a placeholder. You'd replace this with your actual payment processing code.
+        // Placeholder for payment button
         payNowButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Stop the form from submitting normally
+            event.preventDefault(); 
             
             const serviceLabel = document.querySelector('input[name="service"]:checked').dataset.label;
             const stringCost = parseFloat(stringPriceInput.value) || 0;
             const description = document.getElementById('description').value;
             const totalAmount = displayTotal.textContent;
 
-            // Log values for demonstration
             console.log("Order Details:");
             console.log(`- Service: ${serviceLabel}`);
             console.log(`- String Cost: $${stringCost.toFixed(2)}`);
@@ -156,11 +308,9 @@
             console.log(`- Notes: ${description}`);
 
             alert(`The total is $${totalAmount}. This is where you would connect to a payment gateway like Stripe or PayPal.`);
-            // e.g., Integrate with Stripe: stripe.redirectToCheckout({...});
-            // Or with PayPal: window.location.href = `https://www.paypal.com/...`;
         });
     });
-</script>
+    </script>
     
 </body>
 </html>
